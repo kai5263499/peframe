@@ -48,6 +48,18 @@ def autoanalysis(pe, filename, isjson=False):
 		
 		print json.dumps(final)
 
+		
+#		print pecore.get_info(pe, filename), \
+#			pecore.get_cert(pe), \
+#			pecore.get_packer(pe), \
+#			pecore.get_antidbg(pe), \
+#			pecore.get_antivm(filename), \
+#			pecore.get_xor(filename), \
+#			pecore.get_apialert(pe), \
+#			pecore.get_secalert(pe), \
+#			pecore.get_fileurl(filename), \
+#			pecore.get_meta(pe)
+
 	else:
 		stdoutput.show_auto(
 			pecore.get_info(pe, filename), \
