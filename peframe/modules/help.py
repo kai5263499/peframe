@@ -18,8 +18,8 @@
 # ----------------------------------------------------------------------
 
 # About
-NAME		= "PEframe"
-VERSION		= "4.2"
+NAME		= "PEframe - j-o-s-h fork"
+VERSION		= "4.3"
 AUTHOR		= "Author: Gianni 'guelfoweb' Amato"
 GITHUB		= "Github: https://github.com/guelfoweb/peframe"
 INFO		= NAME+" v."+VERSION+" - Open Source Project\n"+AUTHOR+"\n"+GITHUB
