@@ -46,43 +46,53 @@ global pe
 
 def get_info(pe, filename):
 	show_info = json.loads(info.get(pe, filename))
-	return json.dumps({"Short Info": show_info}, indent=4, separators=(',', ': '))
+	return show_info
+	#return json.dumps({"Short Info": show_info}, indent=4, separators=(',', ': '))
 
 def get_cert(pe):
 	show_cert = json.loads(cert.get(pe))
-	return json.dumps({"Digital Signature": show_cert}, indent=4, separators=(',', ': '))
+	return show_cert
+	#return json.dumps({"Digital Signature": show_cert}, indent=4, separators=(',', ': '))
 
 def get_packer(pe):
 	show_packer = peid.get(pe)
-	return json.dumps({"Packer": show_packer}, indent=4, separators=(',', ': '))
+	return show_packer
+	#return json.dumps({"Packer": show_packer}, indent=4, separators=(',', ': '))
 
 def get_antidbg(pe):
 	show_antidbg = apiantidbg.get(pe)
-	return json.dumps({"Anti Debug": show_antidbg}, indent=4, separators=(',', ': '))
+	return show_antidbg
+	#return json.dumps({"Anti Debug": show_antidbg}, indent=4, separators=(',', ': '))
 
 def get_xor(pe):
 	show_xor = xor.get(pe)
-	return json.dumps({"Xor": show_xor[0], "Offset": show_xor[1]}, indent=4, separators=(',', ': '))
+	return show_xor
+	#return json.dumps({"Xor": show_xor[0], "Offset": show_xor[1]}, indent=4, separators=(',', ': '))
 		
 def get_antivm(filename):
 	show_antivm = antivm.get(filename)
-	return json.dumps({"Anti VM": show_antivm}, indent=4, separators=(',', ': '))
+	return show_antivm
+	#return json.dumps({"Anti VM": show_antivm}, indent=4, separators=(',', ': '))
 	
 def get_apialert(pe):
 	show_apialert = apialert.get(pe)
-	return json.dumps({"Suspicious API": show_apialert}, indent=4, separators=(',', ': '))
+	return show_apialert
+	#return json.dumps({"Suspicious API": show_apialert}, indent=4, separators=(',', ': '))
 		
 def get_secalert(pe):
 	show_secalert = secalert.get(pe)
-	return json.dumps({"Suspicious Sections": show_secalert}, indent=4, separators=(',', ': '))
+	return show_secalert
+	#return json.dumps({"Suspicious Sections": show_secalert}, indent=4, separators=(',', ': '))
 
 def get_fileurl(filename):
 	show_fileurl = fileurl.get(filename)
-	return json.dumps({"File Name": show_fileurl[0], "Url": show_fileurl[1]}, indent=4, separators=(',', ': '))
+	return show_fileurl
+	#return json.dumps({"File Name": show_fileurl[0], "Url": show_fileurl[1]}, indent=4, separators=(',', ': '))
 	
 def get_meta(pe):
 	show_meta = meta.get(pe)
-	return json.dumps({"Meta Data": show_meta}, indent=4, separators=(',', ': '))
+	return show_meta
+	#return json.dumps({"Meta Data": show_meta}, indent=4, separators=(',', ': '))
 
 
 # Options

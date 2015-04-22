@@ -33,9 +33,18 @@ def is_pe(filename):
 		print "Error: invalid file"
 		exit(0)
 
-def autoanalysis(pe, filename, json=False):
-	if json:
+def autoanalysis(pe, filename, isjson=False):
+	if isjson:
+		final = { }
 		final['info'] = pecore.get_info(pe, filename)
+		final['cert'] = pecore.get_cert(pe)
+		final['packer'] = pecore.get_packer(pe)
+		final['antidbg'] = pecore.get_antidbg(pe)
+		final['antivm'] = pecore.get_antivm(filename)
+		final['apialert'] = pecore.get_apialert(pe)
+		final['secalert'] = pecore.get_secalert(pe)
+		final['urialert'] = pecore.get_fileurl(filename)
+		final['meta'] = pecore.get_meta(pe)
 		
 		print json.dumps(final)
 
@@ -96,7 +105,7 @@ def main():
 		is_pe(filename)
 
 		if option == "--json":
-			autoanalysis(pe, filename, json=True); exit(0)
+			autoanalysis(pe, filename, isjson=True); exit(0)
 			
 		elif option == "--import":
 			stdoutput.show_import(pe); exit(0)
