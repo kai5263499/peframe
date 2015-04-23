@@ -30,7 +30,7 @@ def is_pe(filename):
 		pe = pefile.PE(filename)
 		return True
 	except:
-		print "Error: invalid file"
+		print >> sys.stderr, "Error: invalid file"
 		exit(0)
 
 def autoanalysis(pe, filename, isjson=False):
