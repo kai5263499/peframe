@@ -18,6 +18,7 @@
 # ----------------------------------------------------------------------
 
 import json
+import rfc3987
 
 import pefile
 import peutils
@@ -127,3 +128,15 @@ def get_dir(pe, d):
 		return directory.get_debug(pe)
 	if d == "tls":
 		return directory.get_tls(pe)
+
+def get_uris(strings, min_length=10):
+    # used when calling .extract_fileurl() before .extract_strings()
+    if len(strings) <= 0:
+        return
+
+    _uri_matcher = rfc3987.get_compiled_pattern('^%(URI)s$')
+
+    extracted_uris = [uri for uri in strings if
+                                len(uri) > min_length and
+                                _uri_matcher.match(uri)]
+    return extracted_uris

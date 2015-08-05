@@ -92,6 +92,13 @@ def get(pe, filename):
 	if xorcheck[0] and xorcheck[1]:
 			detected.append("Xor")
 
+	crc_claimed = pe.OPTIONAL_HEADER.CheckSum
+	crc_actual = pe.generate_checksum()
+
+	valid_checksum = crc_claimed == crc_actual
+	if not valid_checksum:
+		detected.append("Invalid Checksum")
+
 	antivirtualmachine = antivm.get(filename) # anti virtual machine
 	if antivirtualmachine:
 		detected.append("Anti VM")
