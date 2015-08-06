@@ -17,32 +17,20 @@
 # along with PEframe. If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import string
+import re
 
-import pefile
-import peutils
 
-printable = set(string.printable)
-def get_process(stream):
-    found_str = ""
-    while True:
-        data = stream.read(1024*4)
-        if not data:
-            break
-        for char in data:
-            if char in printable:
-                found_str += char
-            elif len(found_str) >= 4:
-                yield found_str
-                found_str = ""
-            else:
-                found_str = ""
+def get_process(content, min_length=6):
+    # regex from cuckoo project
+    strings = tuple(found.strip() for found in
+                    re.findall('[\x1f-\x7e]{%s,}' %
+                               min_length, content))
+    strings += tuple(str(ws.decode("utf-16le")).strip()
+                     for ws in re.findall('(?:[\x1f-\x7e][\x00]){%s,}'
+                                          % min_length, content))
+    return strings
+
 
 def get(filename):
-	array = ""
-	PEtoStr = open(filename, 'rb')
-	for string in get_process(PEtoStr):
-		array += string
-	PEtoStr.close()
-	return array
-
+    with open(filename, 'rb') as f:
+        return get_process(f.read())

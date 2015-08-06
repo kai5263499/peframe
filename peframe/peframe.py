@@ -45,8 +45,9 @@ def autoanalysis(pe, filename, isjson=False):
 		final['secalert'] = pecore.get_secalert(pe)
 		final['urialert'] = pecore.get_fileurl(filename)
 		final['meta'] = pecore.get_meta(pe)
-		final['strings'] = pecore.get_strings(filename)
-		final['urls'] = pecore.get_uris(final['strings'])
+		strings = pecore.get_strings(filename)
+		final['urls'] = pecore.get_uris(strings)
+		final['strings'] = [strings]
 		
 		print json.dumps(final)
 
