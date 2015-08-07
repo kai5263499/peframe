@@ -31,7 +31,7 @@ def get(pe):
 			sc   = section.Name
 			md5  = section.get_hash_md5()
 			sha1 = section.get_hash_sha1()
-			array.append({"Section": sc, "Hash MD5": md5, "Hash SHA-1": sha1})
+			array.append({"Section": sc, "Hash MD5": md5, "Hash SHA-1": sha1, "Size of Raw Data": section.SizeOfRawData, "Entropy": section.get_entropy()})
 
 	return array
 
