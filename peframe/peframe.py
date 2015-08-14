@@ -43,11 +43,10 @@ def autoanalysis(pe, filename, isjson=False):
 		final['antivm'] = pecore.get_antivm(filename)
 		final['apialert'] = pecore.get_apialert(pe)
 		final['secalert'] = pecore.get_secalert(pe)
-		final['urialert'] = pecore.get_fileurl(filename)
+		# final['urialert'] = pecore.get_fileurl(filename)
 		final['meta'] = pecore.get_meta(pe)
-		strings = pecore.get_strings(filename)
-		final['urls'] = pecore.get_uris(strings)
-		final['strings'] = [strings]
+		# strings = pecore.get_strings(filename)
+		# final['urls'] = pecore.get_uris(strings)
 		
 		print json.dumps(final)
 
